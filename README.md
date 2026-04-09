@@ -48,36 +48,44 @@ Assign/
 └── README.md               # Documentation
 ```
 
+## Deployment Strategy
+
+This application is designed for a hybrid deployment to maximize performance and maintain real-time capabilities:
+
+- **Frontend**: Deployed on **Vercel** for lightning-fast static delivery and seamless global edge distribution.
+- **Backend**: Deployed on **Render** (as a Web Service) to support long-lived WebSocket connections and persistent server-side logic.
+
 ## Setup & Installation
 
 ### 1. Prerequisites
 - **Node.js**: v18 or later.
 - **MongoDB**: A running local instance or an Atlas cluster.
 
-### 2. Backend Configuration
+### 2. Backend Deployment (Render)
 1. Navigate to the /backend directory:
    ```bash
    cd backend
    npm install
    ```
-2. Create or update your .env file:
-   ```env
-   PORT=5000
-   MONGODB_URI=your_mongodb_connection_string
-   FRONTEND_URL=http://localhost:5173
-   ```
+2. Set up the following environment variables in the Render dashboard:
+   - `MONGODB_URI`: Your MongoDB Atlas connection string.
+   - `PORT`: 5000 (standard for Render).
+   - `FRONTEND_URL`: Your Vercel domain.
 3. Start the server:
    ```bash
    npm run dev
    ```
 
-### 3. Frontend Configuration
+### 3. Frontend Deployment (Vercel)
 1. Navigate to the /frontend directory:
    ```bash
    cd ../frontend
    npm install
    ```
-2. Start the development server:
+2. Set up the following environment variables in Vercel:
+   - `VITE_API_BASE_URL`: https://your-backend.onrender.com/api
+   - `VITE_WS_URL`: wss://your-backend.onrender.com
+3. Start the development server:
    ```bash
    npm run dev
    ```
