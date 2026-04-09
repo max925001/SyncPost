@@ -1,3 +1,4 @@
+console.log('--- STARTING SERVER PROCESS ---');
 import express from 'express';
 import { WebSocketServer } from 'ws';
 import cors from 'cors';
