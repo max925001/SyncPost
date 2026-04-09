@@ -6,8 +6,8 @@ import useWebSocket from './hooks/useWebSocket';
 import PostCard from './components/PostCard';
 import PostModal from './components/PostModal';
 
-const API_BASE = 'http://localhost:5000/api';
-const WS_URL = 'ws://localhost:5000';
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+const WS_URL = import.meta.env.VITE_WS_URL || 'ws://localhost:5000';
 
 function App() {
   const [posts, setPosts] = useState([]);
